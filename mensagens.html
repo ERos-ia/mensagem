@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens para Principessa</title>
+    <style>
+        body {
+            background-color: #ffc0cb;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mensagens para Principessa</h1>
+
+    <p>Escolha uma opção:</p>
+    <button onclick="gerarMensagem('aleatoria')">Mensagem Aleatória</button>
+    <br>
+    <label for="humor">Escolha o humor:</label>
+    <select id="humor">
+        <option value="romantico">Romântico</option>
+        <option value="engracado">Engraçado</option>
+        <option value="poetico">Poético</option>
+    </select>
+    <br>
+    <button onclick="gerarMensagem('humor')">Gerar Mensagem</button>
+
+    <div id="mensagem" class="message"></div>
+
+    <script>
+        const mensagens = {
+            romanticas: [
+                "Principessa, seu olhar ilumina minha noite mais do que a lua cheia.",
+                "Se o meu desejo se torna-se realidade, teria seus olhos.",
+                "Muitas coisas são efémeras, mas o que sinto por ti renova a cada dia.",
+                "Seu sorriso é mais mágico que qualquer encantamento.",
+                "Se o universo tem um centro, ele está nos seus olhos cor de luar.",
+                "Se o amor fosse um feitiço, você seria minha poção favorita.",
+                "Mesmo nos filmes de terror mais assustadores, eu enfrentaria qualquer monstro para ficar do teu lado.",
+                "Você é minha estrela favorita em um universo cheio de possibilidades.",
+                "Olhar para você é como observar o céu noturno: Bonito demais para desviar o olhar."
+            ],
+            engracadas: [
+                "Se eu fosse um bruxo, teria conjurado um feitiço para que você estivesse aqui.",
+                "Você pratica bruxaria, mas a única coisa amaldiçoada aqui é a minha habilidade de fazer piadas decentes.",
+                "O mistério do século: Como a hello kitty é tão adorável sem ter uma boca pra pedir carinho?",
+                "Hello Kitty não tem boca, mas consegue ser mais expressiva que eu pela manhã.",
+                "Se o amor fosse um feitiço, já estaria enfeitiçado por você faz tempo!",
+                "Seus feitiços são incríveis, teria como me ensinar um pra matar a vontade que tenho de sair pelado na chuva?",
+                "Se a Hello Kitty fosse sua ajudante, ela seria a gata que aparece para roubar seus cristais.",
+                "Se fossemos personagens do universo da Hello Kitty, eu seria o bichinho que te acompanha o tempo todo."
+            ],
+            poeticas: [
+                "Na dança das folhas, o vento sussurra seu nome.",
+                "A lua me contou um segredo: que seu coração bate no ritmo do meu.",
+                "Se o destino é traçado, espero que minha linha se entrelace com a sua para sempre.",
+                "Você é o feitiço mais doce da minha noite estrelada.",
+                "Entre brumas e flores, meu caminho sempre me leva até você.",
+                "Meu primeiro amor.",
+                "Hoje cedo contei para as flores o que eu faria por você e elas se abriram.",
+                "Ser uma mulher é estar pronta para a guerra.",
+                "Beijaria todas as suas feridas.",
+                "Em um sonho vi o amor da minha vida, ela tinha seu sorriso."
+            ]
+        };
+
+        function gerarMensagem(tipo) {
+            let mensagem = '';
+            if (tipo === 'aleatoria') {
+                const todasMensagens = [...mensagens.romanticas, ...mensagens.engracadas, ...mensagens.poeticas];
+                mensagem = todasMensagens[Math.floor(Math.random() * todasMensagens.length)];
+            } else {
+                const humor = document.getElementById('humor').value;
+                if (humor === 'romantico') {
+                    mensagem = mensagens.romanticas[Math.floor(Math.random() * mensagens.romanticas.length)];
+                } else if (humor === 'engracado') {
+                    mensagem = mensagens.engracadas[Math.floor(Math.random() * mensagens.engracadas.length)];
+                } else if (humor === 'poetico') {
+                    mensagem = mensagens.poeticas[Math.floor(Math.random() * mensagens.poeticas.length)];
+                }
+            }
+            document.getElementById('mensagem').textContent = mensagem;
+        }
+    </script>
+
+</body>
+</html>
+
+
